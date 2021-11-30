@@ -11,7 +11,7 @@ Copyright (c) 2021 Université Savoie Mont-Blanc
 '''
 import matplotlib.pyplot as plt
 from image import Image
-from reconnaissance import reconnaissance_chiffre, lecture_modeles
+from reconnaissance import reconnaissance_chiffre_, lecture_modeles
 
 
 if __name__ == '__main__':
@@ -50,5 +50,5 @@ if __name__ == '__main__':
     # Lecture modeles et reconnaissance
     #==============================================================================
     liste_modeles = lecture_modeles(path_to_assets)
-    chiffre, prop = reconnaissance_chiffre(image, liste_modeles,145)
+    chiffre, prop = reconnaissance_chiffre_(image, liste_modeles,145)
     print("Le chiffre reconnu est : ", chiffre, "avec une similitude de :", prop)

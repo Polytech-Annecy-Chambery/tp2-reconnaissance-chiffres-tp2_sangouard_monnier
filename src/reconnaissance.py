@@ -11,7 +11,7 @@ def lecture_modeles(chemin_dossier):
     return liste_modeles
 
 
-def reconnaissance_chiffre(image, liste_modeles, S):
+def reconnaissance_chiffre_(image, liste_modeles, S):
     image_binarisee = image.binarisation(S)
     image_localisee = image_binarisee.localisation()
     
@@ -29,3 +29,20 @@ def reconnaissance_chiffre(image, liste_modeles, S):
             ind_max_similitude = i
     return ind_max_similitude, max_similitude
 
+def reconnaissance_chiffre(image, liste_modeles, S):
+    image_binarisee = image.binarisation(S)
+    image_localisee = image_binarisee.localisation()
+    
+    tab_similitude = [] #liste des similitudes entre notre image et tous les modèles
+    for x in liste_modeles : #x est une image modèle
+        image_resized = image_localisee.resize(x.H,x.W) #on redimensionne notre image à la taille de l'image modèle pour pouvoir les comparer
+        similitude = image_resized.similitude(x)
+        tab_similitude.append(similitude)
+    
+    ind_max_similitude = 0  
+    max_similitude = 0
+    for i in range (len(tab_similitude)): #on recherche le modèle qui a le plus de similitude avec notre image
+        if tab_similitude[i]>max_similitude:
+            max_similitude = tab_similitude[i]
+            ind_max_similitude = i
+    return ind_max_similitude
