@@ -11,7 +11,7 @@ Copyright (c) 2021 Université Savoie Mont-Blanc
 '''
 import matplotlib.pyplot as plt
 from image import Image
-from reconnaissance import reconnaissance_chiffre, lecture_modeles
+from reconnaissance import reconnaissance_chiffre_, lecture_modeles
 
 
 if __name__ == '__main__':
@@ -30,7 +30,7 @@ if __name__ == '__main__':
     #==============================================================================
     # Binarisation de l'image et affichage
     #==============================================================================
-    S = 70
+    S = 145
     image_binarisee = image.binarisation(S)
     image_binarisee.display("Image binarisee")
 
@@ -43,12 +43,12 @@ if __name__ == '__main__':
     #==============================================================================
     # Redimensionnement de l'image et affichage
     #==============================================================================
-    image_resizee = image_localisee.resize(100, 500)
+    image_resizee = image_localisee.resize(40, 40)
     image_resizee.display("Image redimensionee")
 
     #==============================================================================
     # Lecture modeles et reconnaissance
     #==============================================================================
     liste_modeles = lecture_modeles(path_to_assets)
-    chiffre = reconnaissance_chiffre(image, liste_modeles, 70)
-    print("Le chiffre reconnu est : ", chiffre)
+    chiffre, prop = reconnaissance_chiffre_(image, liste_modeles,145)
+    print("Le chiffre reconnu est : ", chiffre, "avec une similitude de :", prop)
