@@ -11,6 +11,8 @@ def lecture_modeles(chemin_dossier):
     return liste_modeles
 
 
+
+#fonction reconnaissance modifiée pour retourner l'indice ET la proportion de similitude
 def reconnaissance_chiffre_(image, liste_modeles, S):
     image_binarisee = image.binarisation(S)
     image_localisee = image_binarisee.localisation()
@@ -29,6 +31,12 @@ def reconnaissance_chiffre_(image, liste_modeles, S):
             ind_max_similitude = i
     return ind_max_similitude, max_similitude
 
+
+
+
+
+
+#fonction reconnaissance copiée pour valider les tests Github
 def reconnaissance_chiffre(image, liste_modeles, S):
     image_binarisee = image.binarisation(S)
     image_localisee = image_binarisee.localisation()
